@@ -1,0 +1,42 @@
+{
+  "name": "arcgis-meets-geojson",
+  "version": "1.0.3-rc.0",
+  "description": "Simplified and more compatible fork of Esri tools to convert ArcGIS JSON geometries to GeoJSON geometries and vice-versa.",
+  "author": "Marco Nicola",
+  "license": "Apache-2.0",
+  "keywords": [
+    "arcgis",
+    "convert",
+    "geo",
+    "geojson",
+    "geometry"
+  ],
+  "main": "dist/arcgis-meets-geojson.js",
+  "homepage": "https://github.com/marco-nicola/arcgis-meets-geojson#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marco-nicola/arcgis-meets-geojson.git"
+  },
+  "scripts": {
+    "lint": "semistandard | snazzy",
+    "test:node": "babel-node test/index.js [ babelify --presets es2015 ] | faucet",
+    "test:browser": "browserify test/index.js -t [ babelify --presets es2015 ] --debug | tape-run --browser phantom | faucet",
+    "test": "npm run lint && npm run test:node && npm run test:browser",
+    "release": "./release.sh",
+    "bundle": "rollup index.js -m dist/arcgis-meets-geojson.js.map -f umd -o dist/arcgis-meets-geojson.js -n ArcgisMeetsGeojson",
+    "prepublish": "npm run bundle"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "faucet": "0.0.1",
+    "phantomjs": "^2.1.7",
+    "rollup": "^0.49.3",
+    "semistandard": "^11.0.0",
+    "snazzy": "^7.0.0",
+    "tape": "^4.8.0",
+    "tape-run": "^3.0.0"
+  }
+}
